@@ -9,15 +9,13 @@ import webserver.HttpResponse;
 import java.io.IOException;
 import java.util.Map;
 
-public class UserCreateController implements Controller{
+public class UserCreateController implements Controller {
     @Override
     public void service(HttpRequest request, HttpResponse response) throws IOException {
         Map<String, String> userInfo = request.getParams();
         try {
             DataBase.addUser(User.from(userInfo));
-            response.setHttpStatus(HttpStatus.REDIRECT);
-            response.setHeader("Location", "/index.html");
-            response.send();
+            response.sendRedirect("/index.html");
 
         } catch (IllegalArgumentException e) {
             e.printStackTrace();

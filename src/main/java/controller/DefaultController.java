@@ -17,11 +17,11 @@ public class DefaultController implements Controller {
         response.setHttpStatus(HttpStatus.OK);
 
         if (path.endsWith("html")) {
-            response.setHeader("Content-Type", ContentType.HTML.getType());
+            response.setContentType(ContentType.HTML.getType());
         } else if (path.endsWith("css")) {
-            response.setHeader("Content-Type", ContentType.CSS.getType());
+            response.setContentType(ContentType.CSS.getType());
         } else if (path.endsWith("js")) {
-            response.setHeader("Content-Type", ContentType.JS.getType());
+            response.setContentType(ContentType.JS.getType());
         }
         response.sendWithBody(body);
     }

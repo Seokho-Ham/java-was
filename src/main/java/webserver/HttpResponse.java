@@ -25,6 +25,16 @@ public class HttpResponse {
         responseHeader.put(key, value);
     }
 
+    public void sendRedirect(String location) throws IOException {
+        httpStatus = HttpStatus.REDIRECT;
+        responseHeader.put("Location", location);
+        send();
+    }
+
+    public void setContentType(String type) {
+        responseHeader.put("Content-Type", type);
+    }
+
     public void sendWithBody(byte[] body) throws IOException {
         writeAllHeaders();
         writeBody(body);
